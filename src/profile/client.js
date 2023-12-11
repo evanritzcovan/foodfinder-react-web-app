@@ -3,7 +3,7 @@ const request = axios.create({
   withCredentials: true,
 });
 
-export const BASE_API = "http://localhost:4000";
+export const BASE_API = "https://foodfinder-node-server-app.onrender.com";
 console.log(BASE_API);
 export const USERS_API = `${BASE_API}/api/users`;
 export const signin = async (credentials) => {

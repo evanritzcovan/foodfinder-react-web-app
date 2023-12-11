@@ -1,6 +1,6 @@
 import axios from "axios";
 // import express from "express";
-export const BASE_API = "http://localhost:4000";
+export const BASE_API = "https://foodfinder-node-server-app.onrender.com";
 export const RESTAURANTS_API = `${BASE_API}/api/restaurants`;
 
 // Yelp API call to find restaurants based on two inputs (food and location).
