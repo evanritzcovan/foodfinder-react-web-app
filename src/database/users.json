@@ -1,0 +1,105 @@
+
+[{
+    "_id": {
+      "$oid": "6557fcefa11aca2377083754"
+    },
+    "username": "johndoe",
+    "password": "jd123",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "johndoe@gmail.com",
+    "zipCode": "10203",
+    "phone": "1112223333",
+    "role": "USER"
+  },
+  {
+    "_id": {
+      "$oid": "6557fcefa11aca2377083755"
+    },    
+    "username": "steveh",
+    "password": "sh123",
+    "firstName": "Steve",
+    "lastName": "Henderson",
+    "email": "stevehenderson@gmail.com",
+    "zipCode": "12345",
+    "phone": "123123125",
+    "role": "USER"
+  },
+  {
+    "_id": {
+      "$oid": "6557fcefa11aca2377083756"
+    },
+    "username": "csmith",
+    "password": "cm123",
+    "firstName": "Caitlyn",
+    "lastName": "Smith",
+    "email": "caitlynsmith@gmail.com",
+    "zipCode": "10203",
+    "phone": "435636453",
+    "role": "USER"
+  },
+  {
+    "_id": {
+      "$oid": "6557fcefa11aca2377083757"
+    },
+    "username": "moepizz",
+    "password": "mp123",
+    "firstName": "Moe",
+    "lastName": "Pizz",
+    "email": "moepizz@gmail.com",
+    "zipCode": "12333",
+    "phone": "6786786788",
+    "role": "USER"
+  },
+  {
+    "_id": {
+      "$oid": "6557fcefa11aca2377083758"
+    },    
+    "username": "gijigiji",
+    "password": "gjgj",
+    "firstName": "Gina",
+    "lastName": "Jina",
+    "email": "ginajina@gmail.com",
+    "zipCode": "75663",
+    "phone": "7897897899",
+    "role": "USER"
+  },
+  {
+    "_id": {
+      "$oid": "6557fcefa11aca2377083759"
+    },
+    "username": "pizzapj",
+    "password": "cheese",
+    "firstName": "Patrick",
+    "lastName": "Jackson",
+    "email": "patrickjackson@gmail.com",
+    "zipCode": "97102",
+    "phone": "8908908900",
+    "role": "USER"
+  },
+  {
+    "_id": {
+      "$oid": "6557fcefa11aca2377083760"
+    },    
+    "username": "boston",
+    "password": "greens",
+    "firstName": "Paul",
+    "lastName": "Pierce",
+    "email": "paulpierce@gmail.com",
+    "zipCode": "98004",
+    "phone": "1231231233",
+    "role": "USER"
+  },
+  {
+    "_id": {
+      "$oid": "6557fcefa11aca2377083761"
+    },    
+    "username": "samiam",
+    "password": "airforce",
+    "firstName": "Samantha",
+    "lastName": "Pilot",
+    "email": "sampilot@gmail.com",
+    "zipCode": "98104",
+    "phone": "2342342344",
+    "role": "USER"
+  }]

@@ -1,0 +1,70 @@
+.searchHeader {
+    line-height: 2;
+    color: #333;
+    display: flex;
+    justify-content: center;
+}
+
+.searchBar {
+    margin-left: 450px;
+    margin-right: 500px;
+    justify-content: center;
+}
+
+.searchButton {
+    max-width: max-content;
+    height: 40px;
+    align-items: center;
+}
+
+.searchIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resultHeader {
+    color: #333;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0px 30px 0px;
+}
+
+.searchResults {
+    margin: 50px 50px 50px 50px;
+}
+
+.restaurantImage {
+    width: 250px;
+    height: 250px;
+}
+
+.results {
+    margin: 0px 150px 0px 150px;
+}
+
+.restaurantNameLink {
+    text-decoration: none;
+}
+
+.restaurantName {
+    color: black;
+    font-family: "Open Sans", "Helvetica Neue",
+        Helvetica, Arial, sans-serif;
+}
+
+.restaurantName:hover {
+    color: lightblue;
+}
+
+.likedUsersBox {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    height: 100%;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+}

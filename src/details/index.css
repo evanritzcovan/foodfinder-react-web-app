@@ -1,0 +1,16 @@
+.restaurantImage {
+    width: 400px;
+    height: 400px;
+}
+
+p, li {
+    margin-bottom: 5px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li > p {
+    margin-bottom: 3px;
+}
