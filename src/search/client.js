@@ -8,8 +8,12 @@ export const RESTAURANTS_API = `${BASE_API}/api/restaurants`;
 export const findRestaurants = async (searchConditions) => {
   console.log("Search Food:", searchConditions.food);
   console.log("Search Location:", searchConditions.location);
-  const response = await axios.get(`${RESTAURANTS_API}/search/${searchConditions.food}/${searchConditions.location}`, searchConditions);
-  return response.data;
+  try {
+    const response = await axios.get(`${RESTAURANTS_API}/search/${searchConditions.food}/${searchConditions.location}`, searchConditions);
+    return response.data;
+  } catch(error) {
+    console.error(error)
+  }
 };
 
 export const createRestaurant = async (restaurant) => {
