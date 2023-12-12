@@ -42,14 +42,14 @@ function Navigation() {
             <div class="dropdown dropdown-margin">
               <a class="btn-profile dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
               <ul class="dropdown-menu">
-                {account.username !== "Anonymous" && (
+                {account._id !== undefined && (
                   <div>
                     <li><Link className="dropdown-item" to={`/FoodFinder/profile/${account._id}`}>Profile</Link></li>
                     <li><Link className="dropdown-item" to={`/FoodFinder/profile/edit/${account._id}`}>Edit Profile</Link></li>
                     <li><Link className="dropdown-item dropdown-items" to="/FoodFinder/home" onClick={signout}>Log Out</Link></li>
                   </div>
                 )}
-                {account.username === "Anonymous" && (
+                {account._id === undefined && (
                     <li><Link className="dropdown-item" to="/FoodFinder/login">Log in</Link></li>
                 )}
               </ul>
@@ -63,7 +63,7 @@ function Navigation() {
           </li>
         </ul>
         {account && (
-          <Link className="nav-link user" to="/FoodFinder/profile">Welcome, {account.username}</Link>
+          <Link className="nav-link user" to={!account._id ? `/FoodFinder/login` : `/FoodFinder/profile/${account._id}`}>Welcome, {!account._id ? 'Anonymous' : account.username}</Link>
         )}
       </div>
     </nav>
