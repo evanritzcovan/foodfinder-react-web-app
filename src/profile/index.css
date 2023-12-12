@@ -1,92 +1,97 @@
 .photo_size {
-    height: 150px;
-    width: 150px;    
+  height: 150px;
+  width: 150px;    
 }
 
 .profile-header {
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 2rem;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 2rem;
 }
 
 .profile-content {
-    text-align: left;
-    padding: 1rem;
+  text-align: left;
+  padding: 1rem;
 }
 
 .profile-edit-content {
-    /* text-align: center; */
-    display: flex;
-    align-items: center;
-    padding-left: 3rem;
-    padding-right: 3rem;
+  /* text-align: center; */
+  display: flex;
+  align-items: center;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .profile-personal-image {
-    margin-left: 1rem;
-    margin-right: 5rem;
+  margin-left: 1rem;
+  margin-right: 5rem;
 }
 
 .profile-edit-info {
-    padding-top: 1rem;
-    color: black;
-    display: flex;
-    align-items: end;
-    font-size:x-large;
+  padding-top: 1rem;
+  color: black;
+  display: flex;
+  align-items: end;
+  font-size:x-large;
 }
 
 .profile-personal-info {
-    color: black;
-    display: flex;
-    align-items: end;
-    font-size:x-large;
+  color: black;
+  display: flex;
+  align-items: end;
+  font-size:x-large;
 }
 
 .profile-bookmark-info {
-    color: black;
-    display: flex;
-    align-items: end;
+  color: black;
+  display: flex;
+  align-items: end;
 }
 
 .space {
-    text-indent: 10px;
+  text-indent: 10px;
 }
 
 .indented {
-    text-indent: 30px; 
+  text-indent: 30px; 
   }
 
 .bookmark-col {
-    display: block;
+  display: block;
 
 }
 
 .edit-button {
-    float:right;
+  float:right;
 }
 
 .update-button {
-    float:right;
-    width: 5%;
-    height: 38px
+  float:right;
+  width: 5%;
+  height: 38px
 }
 
 .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 20%;
-    padding-bottom: 5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  padding-bottom: 5rem;
 }
 
 .input-container {
-    display: grid;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .black {
-    text-emphasis-color: black;
+  text-emphasis-color: black;
+}
+
+.bookmark-items {
+  text-decoration: none;
+  color: black;
 }

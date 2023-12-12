@@ -1,70 +1,82 @@
 .nav-works {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .spc {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .search-edits {
-    border: solid black 1px !important;
-    border-radius: 20px;
-    width: 400px;
-    height: 40px;
+  border: solid black 1px !important;
+  border-radius: 20px;
+  width: 400px;
+  height: 40px;
 }
 
 .logo-edits {
-    font-size: x-large !important;
-    color: whitesmoke !important;
+  font-size: x-large !important;
+  color: whitesmoke !important;
 }
 
 .nav-link {
-    text-decoration: none;
-    padding: 10px;
-    margin: 5px 0;
-    color: black;
-    background-color: whitesmoke;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
+  text-decoration: none;
+  padding: 10px;
+  margin: 5px 0;
+  color: black;
+  background-color: whitesmoke;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .user {
-    text-decoration: 'none';
-    text-align: right;
+  text-decoration: 'none';
+  text-align: right;
 }
 
 .nav-link.active {
-    color: white;
-    background-color: green;
+  color: white;
+  background-color: red;
 }
 
 .cr-co {
-    color: black;
+  color: black;
 }
 
 .bg-edit {
-    background-color: rgb(165, 0, 0);
+  background-color: rgb(165, 0, 0);
 }
 
 @media (max-width: 768px) {
-    .navbar .nav-item {
-        display: none;
-    }
-    .navbar .nav-item.important {
-        display: block;
-    }
+  .navbar .nav-item {
+    display: none;
+  }
+  .navbar .nav-item.important {
+    display: block;
+  }
 }
 
 .dropdown-margin {
-    margin-top: 13px;
-    text-decoration: none;
+  margin-top: 13px;
+  text-decoration: none;
 }
 
 .btn-profile {
-    text-decoration: none;
-    color: white;
-    padding-left: 2rem;
+  text-decoration: none;
+  color: white;
+  padding-left: 2rem;
+  text-align: center;
+}
+
+.dropdown-items {
+  align-items: center;
+  width: 20px;
+}
+
+.dropdown-menu {
+  align-items: center;
+  text-align: center;
+  align-self: center;
 }

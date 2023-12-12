@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
-import * as client from "./client";
 import { BsPencil, BsFillCheckCircleFill, BsTrash3Fill, BsPlusCircleFill } from "react-icons/bs"
-import { MdOutlineInsertLink } from "react-icons/md";
+import { Roles } from "../login/roles";
+import * as client from "./client";
 
 function UserList() {
   const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({ username: "", password: "", role: "USER" });
+  const [user, setUser] = useState({ username: "", password: "", role: Roles.USER });
+
   const deleteUser = async (user) => {
     try {
       await client.deleteUser(user);
       setUsers(users.filter((u) => u._id !== user._id));
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -21,52 +21,48 @@ function UserList() {
     try {
       const newUser = await client.createUser(user);
       setUsers([newUser, ...users]);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const selectUser = async (user) => {
-    try {
-      console.log("hello");
-      console.log(user._id);
-      const u = await client.findUserById(user._id);
-      console.log(u);
-      setUser(u);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const updateUser = async () => {
-    try {
-      const status = await client.updateUser(user);
-      setUsers(users.map((u) => (u._id === user._id ? user : u)));
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
   };
 
+  const selectUser = async (user) => {
+    try {
+      const selectedUser = await client.findUserById(user._id);
+      setUser(selectedUser);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateUser = async () => {
+    try {
+      await client.updateUser(user);
+      setUsers(users.map((u) => (u._id === user._id ? user : u)));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const fetchUsers = async () => {
     const users = await client.findAllUsers();
     setUsers(users);
   };
-  useEffect(() => { fetchUsers(); }, []);
+
+  useEffect(() => {
+    fetchUsers();
+  });
+
   return (
     <div>
       <table className="table">
         <thead>
-        <tr>
-            <td>
-                <b>Username</b>
-            </td>
-            <td>
-                <b>First Name</b>
-            </td>
-            <td>
-                <b>Last Name</b>
-            </td>
-        </tr>
-        <tr>
+          <tr>
+            <td><b>Username</b></td>
+            <td><b>First Name</b></td>
+            <td><b>Last Name</b></td>
+          </tr>
+          <tr>
             <td>
               <input value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })}/>
               <input value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })}/>
@@ -85,12 +81,9 @@ function UserList() {
               </select>
             </td>
             <td className="text-nowrap">
-                <BsPlusCircleFill onClick={createUser}  
-                className="text-primary fs-1 text" />
-                <BsFillCheckCircleFill onClick={updateUser}
-                className="me-2 text-success fs-1 text" />
+              <BsPlusCircleFill onClick={createUser} className="text-primary fs-1 text"/>
+              <BsFillCheckCircleFill onClick={updateUser} className="me-2 text-success fs-1 text"/>
             </td>
-
           </tr>
         </thead>
         <tbody>
@@ -101,21 +94,21 @@ function UserList() {
               <td>{user.lastName}</td>
               <td className="text-nowrap">
                 <button className="btn btn-success me-2">
-                <BsTrash3Fill onClick={() => deleteUser(user)} />
+                  <BsTrash3Fill onClick={() => deleteUser(user)}/>
                 </button>
                 <button className="btn btn-success me-2">
-                <BsPencil onClick={() => selectUser(user)} />
+                  <BsPencil onClick={() => selectUser(user)}/>
                 </button>
-                {/* <Link to={`/FoodFinder/profile/${user._id}`} */}
-                <Link to={`/FoodFinder/profile`}
-                  className="btn btn-primary button">
+                <Link to={`/FoodFinder/profile/${user._id}`} className="btn btn-primary button">
                   Profile
                 </Link>
-            </td>
-            </tr>))}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
 }
+
 export default UserList;
