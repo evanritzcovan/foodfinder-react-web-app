@@ -28,7 +28,7 @@ function Navigation() {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse justify-content-end`} id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
+        <ul className="navbar-nav me-auto">
           <li className="nav-item active">
             <Link className="nav-link cr-co" to="/FoodFinder/home">Home</Link>
           </li>
@@ -63,7 +63,9 @@ function Navigation() {
           </li>
         </ul>
         {account && (
-          <Link className="nav-link user" to={!account._id ? `/FoodFinder/login` : `/FoodFinder/profile/${account._id}`}>Welcome, {!account._id ? 'Anonymous' : account.username}</Link>
+          <Link className="nav-link user" to={!account._id ? `/FoodFinder/login` : `/FoodFinder/profile/${account._id}`}>
+            Welcome, {!account._id ? 'Anonymous' : account.firstName}
+          </Link>
         )}
       </div>
     </nav>

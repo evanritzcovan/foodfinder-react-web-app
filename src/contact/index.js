@@ -40,13 +40,12 @@ function Contact() {
         <p><strong>Email:</strong> <a href="mailto:evanritzcovan@gmail.com">evanritzcovan@gmail.com</a></p>
       </div>
       {messageOn && (
-        <div className="card card-edi">
+        <div className="card card-edi mx-auto">
           <div className="card-header">
             Message Received!
           </div>
           <div className="card-body">
-            <h5 className="card-title">Thank You!</h5>
-            <p className="card-text">You will hear from us shortly!</p>
+            <p className="card-text">Thank you! You will hear from us shortly!</p>
           </div>
         </div>
       )}

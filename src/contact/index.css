@@ -52,7 +52,15 @@
   background-color: rgb(145, 0, 0);
 }
 
-card-edi {
+.card-edi {
   margin: auto;
   width: 20rem !important;
+}
+
+.card-header {
+  text-align: center;
+}
+
+.card-body {
+  text-align: center;
 }
