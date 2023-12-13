@@ -4,16 +4,9 @@ import axios from "axios";
 export const BASE_API = "http://localhost:4000";
 export const RESTAURANTS_API = `${BASE_API}/api/restaurants`;
 
-// Yelp API call to find restaurants based on two inputs (food and location).
 export const findRestaurants = async (searchConditions) => {
-  console.log("Search Food:", searchConditions.food);
-  console.log("Search Location:", searchConditions.location);
-  try {
-    const response = await axios.get(`${RESTAURANTS_API}/search/${searchConditions.food}/${searchConditions.location}`, searchConditions);
-    return response.data;
-  } catch(error) {
-    console.error(error)
-  }
+  const response = await axios.get(`${RESTAURANTS_API}/search/${searchConditions.food}/${searchConditions.location}`, searchConditions);
+  return response.data;
 };
 
 export const createRestaurant = async (restaurant) => {

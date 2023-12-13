@@ -25,7 +25,7 @@ function Profile() {
   const { id } = useParams();
 
   const signout = async () => {
-    const status = await client.signout();
+    await client.signout();
     dispatch(setAccount({ username: "Anonymous", role: Roles.ANONYMOUS }));
   };
 

@@ -10,8 +10,7 @@ export const USERS_API = `${BASE_API}/api/users`;
 
 function Edit() {
   const profilePic = 'https://res.cloudinary.com/drmzaqhgv/image/upload/v1702247974/profile_ztzzsd.png';
-  var [account, setAccount] = useState();
-  account = useSelector((state) => state.accountReducer.account);
+  var account = useSelector((state) => state.accountReducer.account);
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -19,8 +18,7 @@ function Edit() {
   });
   
   const updateUser = async () => {
-    console.log(account.firstName);
-    const status = await client.updateUser(account._id, account);
+    await client.updateUser(account._id, account);
   };
   
   return (

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-import { useSelector } from "react-redux";
 import * as client from "./client";
 import "./index.css";
 
@@ -10,7 +9,6 @@ function Search() {
   const [searchConditions, setSearchConditions] = useState({ food: food, location: location });
   const [results, setResults] = useState(null);
   const navigate = useNavigate();
-  const account = useSelector((state) => state.accountReducer.account);
 
   const fetchResults = async (searchConditions) => {
     const results = await client.findRestaurants(searchConditions);

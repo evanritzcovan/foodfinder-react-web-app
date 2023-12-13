@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./index.css";
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
@@ -10,12 +10,11 @@ import { setAccount } from '../login/accountReducer';
 
 function Navigation() {
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
-  const { pathname } = useLocation();
   var account = useSelector((state) => state.accountReducer.account);
   const dispatch = useDispatch();
 
   const signout = async () => {
-    const status = await client.signout();
+    await client.signout();
     dispatch(setAccount({ username: "Anonymous", role: Roles.ANONYMOUS }));
   };
 
