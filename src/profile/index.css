@@ -95,3 +95,7 @@
   text-decoration: none;
   color: black;
 }
+
+.bookmark-delete-button {
+  float:right;
+}

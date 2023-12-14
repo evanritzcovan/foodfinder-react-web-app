@@ -11,14 +11,10 @@ export const USERS_API = `${BASE_API}/api/users`;
 function Edit() {
   const profilePic = 'https://res.cloudinary.com/drmzaqhgv/image/upload/v1702247974/profile_ztzzsd.png';
   var account = useSelector((state) => state.accountReducer.account);
-  const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
-    role: "",
-  });
+  const [credentials, setCredentials] = useState({username: account.username, password: "", role: account.role});
   
   const updateUser = async () => {
-    await client.updateUser(account._id, account);
+    await client.updateUser(account._id, credentials);
   };
   
   return (
@@ -44,9 +40,9 @@ function Edit() {
           </div>
         </div>
       </div>
-      <Link key={"cancel"} to={`/FoodFinder/profile/${account._id}`} className="btn btn-danger button edit-button mt-5 me-2">Cancel</Link>        
-      <Link key={"save"} to={`/FoodFinder/profile/${account._id}`} onClick={updateUser} className="btn btn-success button edit-button mt-5 me-2">Save</Link>    
-      <Link key={"change_photo"} to={`/FoodFinder/profile/${account._id}`} className="btn btn-primary button edit-button mt-5 me-2">Change Photo</Link>    
+      <Link key={"cancel"} to={`/FoodFinder/profile/${account._id}`} className="btn btn-danger button edit-button mt-5 me-2">Cancel</Link>
+      <Link key={"save"} to={`/FoodFinder/profile/${account._id}`} onClick={updateUser} className="btn btn-success button edit-button mt-5 me-2">Save</Link>
+      <Link key={"change_photo"} to={`/FoodFinder/profile/${account._id}`} className="btn btn-primary button edit-button mt-5 me-2">Change Photo</Link>
       <input className="edit-button mt-5 me-2" type="file" id="image" name="image" value="" required />
     </header>
   );

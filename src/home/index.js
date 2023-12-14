@@ -1,12 +1,14 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import './home.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useSelector } from 'react-redux';
+import { Roles } from '../login/roles';
 
 function Home() {
   let navigate = useNavigate();
+  var account = useSelector((state) => state.accountReducer.account);
   
   const routeChange = () => {
     let path = `/FoodFinder/search`;
@@ -40,11 +42,9 @@ function Home() {
           <span className="carousel-control-next-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Next</span>
         </button>
-
       </div>
       <div className='float-center d-flex'>
         <h1 className='bg-c'>Discover your next meal with FoodFinder!</h1>
-
       </div>
       <div className="d-flex align-items-stretch search-bar">
         <div style={{ margin: "0 auto", display: "flex" }}>
@@ -54,69 +54,69 @@ function Home() {
           </button>
         </div>
       </div>
-      <h1 className="popular-header">Check out this month's most popular restaurants!</h1>
-      <div class="container" style={{ paddingBottom: "100px" }}>
-        <div class="card-container">
-          <div class="card">
-            <img src={"https://res.cloudinary.com/drmzaqhgv/image/upload/v1702240165/American-food-in-Canada_grwfll.jpg"} className="card-img-top" alt="Card"/>
-            <div class="card-body">
-              <h5 class="card-title">Restaurant Name</h5>
-              <p class="card-text">Restaurant Description</p>
-              <a href="#" class="btn suppose">Go to Restaurant</a>
+      {account.role !== Roles.ANONYMOUS && (
+        <>
+          <h1 className="popular-header">Check out this month's most popular restaurants!</h1>
+          <div class="container" style={{ paddingBottom: "100px" }}>
+            <div class="card-container">
+              <div class="card">
+                <img src={"https://s3-media3.fl.yelpcdn.com/bphoto/y-_CvQAfsT9LFlS72W2wmw/o.jpg"} className="card-img-top" alt="Card"/>
+                <div class="card-body">
+                  <h5 class="card-title">The Salty Pig</h5>
+                  <p class="card-text">The Salty Pig serves charcuterie boards made with hand selected meats and cheeses.</p>
+                  <Link class="btn suppose" to={`/FoodFinder/details/t_FFcwUutj9mIYKGw_gHsQ`}>Go to Restaurant</Link>
+                </div>
+              </div>
+              <div class="card">
+                <img src={"https://s3-media1.fl.yelpcdn.com/bphoto/MqbmG0bK1miBp-tRXAWwOQ/o.jpg"} className="card-img-top" alt="Card"/>
+                <div class="card-body">
+                  <h5 class="card-title">Gigi</h5>
+                  <p class="card-text">Gigi's is a cozy neighborhood restaurant serving authentic, homemade Italian food.</p>
+                  <Link class="btn suppose" to={`/FoodFinder/details/SFC_69nOYtVGvwneRcXJTg`}>Go to Restaurant</Link>
+                </div>
+              </div>
+              <div class="card">
+                <img src={"https://s3-media4.fl.yelpcdn.com/bphoto/9-iP3FjGWgo3gwDZPcoT5w/o.jpg"} className="card-img-top" alt="Card"/>
+                <div class="card-body">
+                  <h5 class="card-title">JiangNan Boston</h5>
+                  <p class="card-text">JiangNan specializes in delicacies dedicated to the southern east costal region of China.</p>
+                  <Link class="btn suppose" to={`/FoodFinder/details/GCX6ycKIyIv4xNu_FuX1JA`}>Go to Restaurant</Link>
+                </div>
+              </div>
+              <div class="card">
+                <img src={"https://s3-media3.fl.yelpcdn.com/bphoto/vcblCw2jwRX9UPle3s_cZw/o.jpg"} className="card-img-top" alt="Card"/>
+                <div class="card-body">
+                  <h5 class="card-title">Krasi</h5>
+                  <p class="card-text">Krasi is love. Krasi is life. Krasi means wine, literally. Krasi is Greek, differently.</p>
+                  <Link class="btn suppose" to={`/FoodFinder/details/mnFhrH1Fi5GoSuV-5gVpnA`}>Go to Restaurant</Link>
+                </div>
+              </div>
+              <div class="card">
+                <img src={"https://s3-media1.fl.yelpcdn.com/bphoto/QCOjI06HIhT84vxJ8bF0gw/o.jpg"} className="card-img-top" alt="Card"/>
+                <div class="card-body">
+                  <h5 class="card-title">Anoush'ella</h5>
+                  <p class="card-text">Come to Anoush'ella for our irresistible Eastern Mediterranean street food!</p>
+                  <Link class="btn suppose" to={`/FoodFinder/details/_rFGIsI4O_15Cr5P6zni1w`}>Go to Restaurant</Link>
+                </div>
+              </div>
+              <div class="card">
+                <img src={"https://s3-media2.fl.yelpcdn.com/bphoto/_cp6j8R_pD3j9LwONM_IkA/o.jpg"} className="card-img-top" alt="Card"/>
+                <div class="card-body">
+                  <h5 class="card-title">Mahaniyom</h5>
+                  <p class="card-text">Our dream is to create homey Thai dishes and handcrafted cocktails to share with you!</p>
+                  <Link class="btn suppose" to={`/FoodFinder/details/BRjvpMJ8C_1_mdB3n3tAgA`}>Go to Restaurant</Link>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="card">
-            <img src={"https://res.cloudinary.com/drmzaqhgv/image/upload/v1702240165/American-food-in-Canada_grwfll.jpg"} className="card-img-top" alt="Card"/>
-            <div class="card-body">
-              <h5 class="card-title">Restaurant Name</h5>
-              <p class="card-text">Restaurant Description</p>
-              <a href="#" class="btn suppose">Go to Restaurant</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src={"https://res.cloudinary.com/drmzaqhgv/image/upload/v1702240165/American-food-in-Canada_grwfll.jpg"} className="card-img-top" alt="Card"/>
-            <div class="card-body">
-              <h5 class="card-title">Restaurant Name</h5>
-              <p class="card-text">Restaurant Description</p>
-              <a href="#" class="btn suppose">Go to Restaurant</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src={"https://res.cloudinary.com/drmzaqhgv/image/upload/v1702240165/American-food-in-Canada_grwfll.jpg"} className="card-img-top" alt="Card"/>
-            <div class="card-body">
-              <h5 class="card-title">Restaurant Name</h5>
-              <p class="card-text">Restaurant Description</p>
-              <a href="#" class="btn suppose">Go to Restaurant</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src={"https://res.cloudinary.com/drmzaqhgv/image/upload/v1702240165/American-food-in-Canada_grwfll.jpg"} className="card-img-top" alt="Card"/>
-            <div class="card-body">
-              <h5 class="card-title">Restaurant Name</h5>
-              <p class="card-text">Restaurant Description</p>
-              <a href="#" class="btn suppose">Go to Restaurant</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src={"https://res.cloudinary.com/drmzaqhgv/image/upload/v1702240165/American-food-in-Canada_grwfll.jpg"} className="card-img-top" alt="Card"/>
-            <div class="card-body">
-              <h5 class="card-title">Restaurant Name</h5>
-              <p class="card-text">Restaurant Description</p>
-              <a href="#" class="btn suppose">Go to Restaurant</a>
-            </div>
-          </div>
-        </div>
-        <footer>
-          <p>© 2023 FoodFinder Inc. All Rights Reserved. Contact at: evanritzcovan@gmail.com</p>
-          <p>Presented by Evan</p>
-        </footer>
-      </div>
-    </div >
+        </>
+      )}
+      <footer>
+        <p>© 2023 FoodFinder Inc. All Rights Reserved. Contact at: evanritzcovan@gmail.com</p>
+        <p>Presented by Evan Ritzcovan</p>
+      </footer>
+    </div>
   );
 }
 
-
 export default Home;
-
-
-

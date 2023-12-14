@@ -34,6 +34,10 @@ function Profile() {
     setBookmarks(bookmarks);
   };
 
+  const deleteBookmark = async (restaurantId) => {
+    await bookmarkClient.deleteUserBookmarksRestaurant(id, restaurantId)
+  }
+
   const fetchUserData = async () => {
     const u = await client.findUserById(id);
     setUserFirstName(u.firstName);
@@ -59,29 +63,44 @@ function Profile() {
                   <img style={{ width: 150, height: 150 }} src={profilePic} alt="ProfileImage"/>
                 </section>
               </div>
-              <div className="profile-personal-info col-sm-10">
-                { account.role === "ADMIN" && ( <span><b>{<b>{userFirstName} {userLastName} {userRole}</b>}</b><br/>{<b>{userEmail}</b>}<br/>{<b>{userZipCode}</b>}</span> )}
-                { account.role !== "ADMIN" && ( <span><b>{<b>{userFirstName} {userLastName}</b>}</b><br/>{<b>{userEmail}</b>}<br/>{<b>{userZipCode}</b>}</span> )}
+              <div className="profile-personal-info col-sm-5">
+                { account.role === Roles.ANONYMOUS && (
+                  <span><b>{<b>{userFirstName} {userLastName}</b>}</b><br/>{<b>{userZipCode}</b>}</span>   
+                )}
+                { account.role === Roles.ADMIN && (
+                  <span><b>{<b>{userFirstName} {userLastName} {userRole}</b>}</b><br/>{<b>{userEmail}</b>}<br/>{<b>{userZipCode}</b>}</span>
+                )}
+                { account.role !== Roles.ADMIN && account.role !== Roles.ANONYMOUS && ( 
+                  <span><b>{<b>{userFirstName} {userLastName}</b>}</b><br/>{<b>{userEmail}</b>}<br/>{<b>{userZipCode}</b>}</span>
+                )}
               </div>
             </div>
           </div>
-          <div className="profile-bookmark-info mt-5">
-            <div className="col">
-              <div className="row-1 mt-5">
-                <h3>Bookmarked Restaurants</h3>
-              </div>
-              <div className="list-group">
-                {bookmarks.map((bookmark, index) => (
-                  <li key={index} className="list-group-item">
-                    <Link className="bookmark-items" to={`/FoodFinder/details/${bookmark.restaurantId}`}>
-                      {bookmark.restaurantName}
-                    </Link>
-                  </li>
-                ))}
+          
+          {account.role !== Roles.ANONYMOUS && (
+            <div className="row">
+              <div className="col-sm-4">
+                <div className="profile-bookmark-info row-1 mt-5"><h3>Bookmarked Restaurants</h3></div>
+                <div className="list-group">
+                  {bookmarks.map((bookmark, index) => (
+                    <li key={index} className="list-group-item">
+                      <Link className="bookmark-items" to={`/FoodFinder/details/${bookmark.restaurantId}`}>
+                        {bookmark.restaurantName}
+                        {account._id === id &&
+                          <Link className="btn btn-danger button bookmark-delete-button" onClick={() => deleteBookmark(bookmark.restaurantId)}>Delete</Link>                            
+                        }
+                      </Link>
+                    </li>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-          <Link key={"list"} to={'/FoodFinder/home'} onClick={signout} className="btn btn-danger button edit-button mt-5 me-2">Log Out</Link>
+          )}
+          {account.role !== Roles.ANONYMOUS ? (
+            <Link key={"list"} to={'/FoodFinder/home'} onClick={signout} className="btn btn-danger button edit-button mt-5 me-2">Log Out</Link>
+          ) : (
+            <Link key={"list"} to={'/FoodFinder/login'} className="btn btn-success button edit-button mt-5 me-2">Log In</Link>
+          )}
           {account._id === id &&
             <Link key={"edit"} to={`/FoodFinder/profile/edit/${account._id}`} className="btn btn-success button edit-button mt-5 me-2">Edit Profile</Link>          
           }

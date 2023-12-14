@@ -61,11 +61,11 @@ function Search() {
                     </div>
                     <div className="restaurant-info">
                       <h3 className="restaurant-name">Name: {restaurant.name}</h3>
-                      <p>Business Status: {restaurant.is_closed === false ? 'Opened' : 'Closed'}</p>
-                      <p>Rating: {restaurant.rating}</p>
-                      <p>Price: {restaurant.price ? restaurant.price : 'N/A'}</p>
-                      <p>Address: {restaurant.location.display_address}</p>
-                      <p>Phone: {restaurant.display_phone}</p>
+                      <p>Currently open: {restaurant.is_closed === false ? "Yes" : "No"}</p>
+                      <p>Rating: {restaurant.rating} stars ({restaurant.review_count} reviews)</p>
+                      <p>Price: {restaurant.price ? restaurant.price : "N/A"}</p>
+                      <p>Address: {restaurant.location.display_address[0]}, {restaurant.location.display_address[1]}</p>
+                      {restaurant.display_phone ? ( <p>Phone: <a href={`tel:${restaurant.display_phone}`}>{restaurant.display_phone}</a></p> ) : ( <p>Phone: N/A</p> )}
                     </div>
                   </div>
                 </li>

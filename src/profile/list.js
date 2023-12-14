@@ -7,13 +7,14 @@ import * as client from "./client";
 function UserList() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({ username: "", password: "", role: Roles.USER });
+  const [credentials, setCredentials] = useState({ username: user.username, password: "", role: user.role });
 
   const deleteUser = async (user) => {
     try {
       await client.deleteUser(user);
       setUsers(users.filter((u) => u._id !== user._id));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -22,7 +23,7 @@ function UserList() {
       const newUser = await client.createUser(user);
       setUsers([newUser, ...users]);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -31,16 +32,15 @@ function UserList() {
       const selectedUser = await client.findUserById(user._id);
       setUser(selectedUser);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   const updateUser = async () => {
     try {
-      await client.updateUser(user);
-      setUsers(users.map((u) => (u._id === user._id ? user : u)));
+      await client.updateUser(user._id, credentials);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -64,17 +64,17 @@ function UserList() {
           </tr>
           <tr>
             <td>
-              <input value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })}/>
-              <input value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })}/>
+              <input placeholder={user.password} onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}/>
+              <input placeholder={user.username} onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}/>
             </td>
             <td>
-              <input value={user.firstName} onChange={(e) => setUser({ ...user, firstName: e.target.value })}/>
+              <input placeholder={user.firstName} onChange={(e) => setCredentials({ ...credentials, firstName: e.target.value })}/>
             </td>
             <td>
-              <input value={user.lastName} onChange={(e) => setUser({ ...user, lastName: e.target.value })}/>
+              <input placeholder={user.lastName} onChange={(e) => setCredentials({ ...credentials, lastName: e.target.value })}/>
             </td>
             <td>
-              <select value={user.role} onChange={(e) => setUser({ ...user, role: e.target.value })}>
+              <select placeholder={user.role} onChange={(e) => setCredentials({ ...credentials, role: e.target.value })}>
                 <option value="USER">User</option>
                 <option value="ADMIN">Admin</option>
                 <option value="BUSINESS_OWNER">Business Owner</option>

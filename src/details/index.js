@@ -9,7 +9,7 @@ import "./index.css";
 function Details() {
   const [ restaurant, setRestaurantDetails ] = useState(null);
   const { restaurantId } = useParams();
-  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   const account = useSelector((state) => state.accountReducer.account);
   const [bookmarks, setBookmarks] = useState([]);
   
@@ -51,7 +51,7 @@ function Details() {
             <div className="bookmark-container">
               <h2>Users who bookmarked this restaurant</h2>
               <ul className="user-bookmarks">
-                { bookmarks.length === 0 ? ( <p>"Be the first one who bookmarked this restaurant in the FoodFinder!"</p> ) : (
+                { bookmarks.length === 0 ? ( <p>Nobody has bookmarked this restaurant!</p> ) : (
                   bookmarks.map((bookmark, index) => (
                     <Link to={`/FoodFinder/profile/${bookmark.user._id}`} key={index}>
                       <li className="user-bookmark" key={index}>
@@ -70,37 +70,32 @@ function Details() {
             
             <div className="additional-details">
               {restaurant.categories && <p>Category: {restaurant.categories[0].title}</p>}
-              {restaurant.is_closed && (
-                <p>Business Status: {restaurant.is_closed === false ? "Opened" : "Closed"}</p>
-              )}
-              {restaurant.rating && (
-                <p>
-                  Rating: {restaurant.rating} (Review Counts: {restaurant.review_count})
-                </p>
-              )}
-              {restaurant.hours && (
-                <p>Currently Open: {restaurant.hours[0].is_open_now === true ? "Opened" : "Closed"}</p>
-              )}
+              {restaurant.rating && <p>Rating: {restaurant.rating} stars ({restaurant.review_count} reviews)</p>}
+              {restaurant.hours && <p>Currently open: {restaurant.hours[0].is_open_now === true ? "Yes" : "No"}</p>}
               {restaurant.price && <p>Price: {restaurant.price}</p>}
-              {restaurant.display_phone && <p>Phone: {restaurant.display_phone}</p>}
-              {restaurant.display_address && <p>Address: {restaurant.location.display_address}</p>}
+              {restaurant.display_phone && <p>Phone: <a href={`tel:${restaurant.display_phone}`}>{restaurant.display_phone}</a></p>}
+              {restaurant.display_address && <p>Address: {restaurant.location.display_address[0]}, {restaurant.location.display_address[1]}</p>}
               <div className="transactions">
-                Transactions:
-                <ul>
-                  {restaurant.transactions.map((transaction, index) => (
-                    <li key={index}>{transaction}</li>
-                  ))}
-                </ul>
+                Available:
+                <div style={{ textIndent: "20px" }}>
+                  <ul>
+                    {restaurant.transactions.map((transaction, index) => (
+                      <li key={index}>{transaction.charAt(0).toUpperCase() + transaction.slice(1)}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
               <div className="business-hours">
                 Business Hours:
                 {restaurant.hours && (
-                  <ul>
+                  <ul style={{margin: "10px 0"}}>
                     {restaurant.hours[0].open.map((day) => (
                       <li key={day.day}>
-                        <p>{daysOfWeek[day.day]}</p>
-                        <p>Start Time: {day.start}</p>
-                        <p>End Time: {day.end}</p>
+                        <p>{days[day.day]}</p>
+                        <div style={{ textIndent: "20px" }}>
+                          {day.start.substring(0,2) > 12 ? ( <p>Open: {day.start.substring(0,2) - 12}:00 PM</p> ) : ( <p>Opens: {day.start.substring(0,2) - 0}:00 AM</p> )}
+                          {day.end.substring(0,2) > 12 ? ( <p>Closed: {day.end.substring(0,2) - 12}:00 PM</p> ) : ( <p>Closes: {day.end.substring(0,2) - 0}:00 AM</p> )}
+                        </div>
                       </li>
                     ))}
                   </ul>
