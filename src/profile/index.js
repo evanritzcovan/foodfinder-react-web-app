@@ -9,7 +9,7 @@ import * as bookmarkClient from "../bookmark/client";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
-export const BASE_API = process.env.REACT_APP_BASE_API_URL;
+export const BASE_API = "https://foodfinder-node-server-app.onrender.com";
 export const USERS_API = `${BASE_API}/api/users`;
 
 function Profile() {
