@@ -10,6 +10,16 @@ function Home() {
   let navigate = useNavigate();
   var account = useSelector((state) => state.accountReducer.account);
 
+  const routeToSearch = () => {
+    let path = "/FoodFinder/search";
+    navigate(path);
+  }
+
+  const routeToLogin = () => {
+    let path = "/FoodFinder/search";
+    navigate(path);
+  }
+
   return (
     <div className="ed-mg-t">
       <div id="carouselFoodImages" class="carousel slide" data-bs-ride="true">
@@ -44,12 +54,12 @@ function Home() {
       <div className="d-flex align-items-stretch search-bar">
         <div style={{ margin: "0 auto", display: "flex" }}>
           {account.role !== Roles.GUEST ? (
-            <button className="btn suppose btn-danger home-search-btn searchButton" onClick={navigate("/FoodFinder/search")}>
+            <button className="btn suppose btn-danger home-search-btn searchButton" onClick={routeToSearch}>
               Search!
               <FaSearch className="search-icon-spacing"/>
             </button>
           ) : (
-            <button className="btn suppose btn-danger home-search-btn searchButton" onClick={navigate("/FoodFinder/login")}>
+            <button className="btn suppose btn-danger home-search-btn searchButton" onClick={routeToLogin}>
               Log In
             </button>
           )}
