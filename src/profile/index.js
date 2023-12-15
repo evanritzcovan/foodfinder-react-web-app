@@ -52,7 +52,7 @@ function Profile() {
     fetchUserData();
   });
 
-  if (account.role === Roles.GUEST) {
+  if (!account._id) {
     return (
       <div>
         <h3>Please <a href="#/FoodFinder/login">login / register</a> first to access this page.</h3>

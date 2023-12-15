@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaSearch } from "react-icons/fa";
-import { Roles } from "../login/roles";
 import * as client from "./client";
 import "./index.css";
 
@@ -25,7 +24,7 @@ function Search() {
     }
   }, [food, location]);
 
-  if (account.role === Roles.GUEST) {
+  if (!account._id) {
     return (
       <div className="search-container">
         <h3>Please <a href="#/FoodFinder/login">login / register</a> first to access this page.</h3>

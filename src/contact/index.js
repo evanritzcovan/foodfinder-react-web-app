@@ -9,7 +9,7 @@ function Contact() {
   const [messageOn, setMessageOn] = useState(false);
   var account = useSelector((state) => state.accountReducer.account);
 
-  if (account.role === Roles.GUEST) {
+  if (!account._id) {
     return (
       <div className="contact-container">
         <h3>Please <a href="#/FoodFinder/login">login / register</a> first to access this page.</h3>

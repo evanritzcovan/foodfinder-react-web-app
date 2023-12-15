@@ -4,7 +4,6 @@ import { FaSearch } from "react-icons/fa";
 import "./home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useSelector } from "react-redux";
-import { Roles } from "../login/roles";
 
 function Home() {
   let navigate = useNavigate();
@@ -53,7 +52,7 @@ function Home() {
       </div>
       <div className="d-flex align-items-stretch search-bar">
         <div style={{ margin: "0 auto", display: "flex" }}>
-          {account.role !== Roles.GUEST ? (
+          {account._id ? (
             <button className="btn suppose btn-danger home-search-btn searchButton" onClick={routeToSearch}>
               Search!
               <FaSearch className="search-icon-spacing"/>
@@ -65,7 +64,7 @@ function Home() {
           )}
         </div>
       </div>
-      {account.role !== Roles.GUEST && (
+      {account._id && (
         <>
           <h1 className="popular-header">Check out this month's most popular restaurants!</h1>
           <div class="container" style={{ paddingBottom: "100px" }}>

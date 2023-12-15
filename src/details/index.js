@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Roles } from "../login/roles";
 import * as client from "./client";
 import * as bookmarksClient from "../bookmark/client"
 import "./index.css";
@@ -42,11 +41,9 @@ function Details() {
               <img src={restaurant.image_url} alt={restaurant.name} />
             </div>
             <div className="button-container">
-              {account.role !== Roles.GUEST && (
-                <button className="bookmark-button" onClick={accountBookmarksRestaurant}>
-                  Bookmark
-                </button>
-              )}
+              <button className="bookmark-button" onClick={accountBookmarksRestaurant}>
+                Bookmark
+              </button>
             </div>
             <div className="bookmark-container">
               <h2>Users who bookmarked this restaurant</h2>
@@ -67,7 +64,6 @@ function Details() {
             <Link className="restaurant-yelp-link" to={restaurant.url}>
               <h1>{restaurant.name}</h1> 
             </Link>
-            
             <div className="additional-details">
               {restaurant.categories && <p>Category: {restaurant.categories[0].title}</p>}
               {restaurant.rating && <p>Rating: {restaurant.rating} stars ({restaurant.review_count} reviews)</p>}
