@@ -58,7 +58,7 @@ function Home() {
               <FaSearch className="search-icon-spacing"/>
             </button>
           ) : (
-            <button className="btn suppose btn-danger home-search-btn searchButton" onClick={routeToLogin}>
+            <button className="btn suppose btn-danger home-search-btn searchButton" style={{paddingBottom: "20px"}} onClick={routeToLogin}>
               Log In
             </button>
           )}

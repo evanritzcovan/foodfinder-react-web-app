@@ -26,7 +26,7 @@ function Search() {
 
   if (!account._id) {
     return (
-      <div className="search-container">
+      <div className="guest-container">
         <h3>Please <a href="#/FoodFinder/login">login / register</a> first to access this page.</h3>
       </div>
     );
