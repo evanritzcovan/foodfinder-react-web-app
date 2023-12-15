@@ -41,9 +41,11 @@ function Details() {
               <img src={restaurant.image_url} alt={restaurant.name} />
             </div>
             <div className="button-container">
-              <button className="bookmark-button" onClick={accountBookmarksRestaurant}>
-                Bookmark
-              </button>
+              {account._id && 
+                <button className="bookmark-button" onClick={accountBookmarksRestaurant}>
+                  Bookmark
+                </button>
+              }
             </div>
             <div className="bookmark-container">
               <h2>Users who bookmarked this restaurant</h2>

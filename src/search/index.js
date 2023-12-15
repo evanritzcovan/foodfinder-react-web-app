@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { FaSearch } from "react-icons/fa";
 import * as client from "./client";
 import "./index.css";
@@ -10,7 +9,6 @@ function Search() {
   const [searchConditions, setSearchConditions] = useState({ food: food, location: location });
   const [results, setResults] = useState(null);
   const navigate = useNavigate();
-  var account = useSelector((state) => state.accountReducer.account);
 
   const fetchResults = async (searchConditions) => {
     const results = await client.findRestaurants(searchConditions);
@@ -23,14 +21,6 @@ function Search() {
       fetchResults({ food, location });
     }
   }, [food, location]);
-
-  if (!account._id) {
-    return (
-      <div className="guest-container">
-        <h3>Please <a href="#/FoodFinder/login">login / register</a> first to access this page.</h3>
-      </div>
-    );
-  }
 
   return (
     <div className="search-container">
