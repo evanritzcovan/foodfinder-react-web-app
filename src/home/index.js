@@ -15,7 +15,7 @@ function Home() {
   }
 
   const routeToLogin = () => {
-    let path = "/FoodFinder/search";
+    let path = "/FoodFinder/login";
     navigate(path);
   }
 
@@ -58,7 +58,7 @@ function Home() {
               <FaSearch className="search-icon-spacing"/>
             </button>
           ) : (
-            <button className="btn suppose btn-danger home-search-btn searchButton" style={{paddingBottom: "20px"}} onClick={routeToLogin}>
+            <button className="btn suppose btn-danger home-search-btn searchButton" style={{marginBottom: "12vh"}} onClick={routeToLogin}>
               Log In
             </button>
           )}
