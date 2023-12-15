@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import './index.css';
-import { Roles } from '../login/roles';
+import React, { useState } from "react";
+import "./index.css";
+import { Roles } from "../login/roles";
 import { useSelector } from "react-redux";
 import * as client from "../contact/client.js";
 
@@ -9,7 +9,7 @@ function Contact() {
   const [contact, setContact] = useState({ name: "", email: "", subject: "", message: "" });
   const [messageOn, setMessageOn] = useState(false);
 
-  if (account.role === Roles.ANONYMOUS) {
+  if (account.role === Roles.GUEST) {
     return (
       <div className="contact-container">
         <h3>Please <a href="#/FoodFinder/login">login / register</a> first to access this page.</h3>

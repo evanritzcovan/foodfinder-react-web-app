@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import * as client from "./client";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
 
 export const BASE_API = "https://foodfinder-node-server-app.onrender.com";
 export const USERS_API = `${BASE_API}/api/users`;
 
 function Edit() {
-  const profilePic = 'https://res.cloudinary.com/drmzaqhgv/image/upload/v1702247974/profile_ztzzsd.png';
+  const profilePic = "https://res.cloudinary.com/drmzaqhgv/image/upload/v1702247974/profile_ztzzsd.png";
   var account = useSelector((state) => state.accountReducer.account);
   const [credentials, setCredentials] = useState({username: account.username, password: "", role: account.role});
   

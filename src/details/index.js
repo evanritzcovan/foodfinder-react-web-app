@@ -3,15 +3,15 @@ import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Roles } from "../login/roles";
 import * as client from "./client";
-import * as bookmarksClient from '../bookmark/client'
+import * as bookmarksClient from "../bookmark/client"
 import "./index.css";
 
 function Details() {
   const [ restaurant, setRestaurantDetails ] = useState(null);
   const { restaurantId } = useParams();
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  const account = useSelector((state) => state.accountReducer.account);
   const [bookmarks, setBookmarks] = useState([]);
+  var account = useSelector((state) => state.accountReducer.account);
   
   const accountBookmarksRestaurant = async () => {
     const newBookmarks = await bookmarksClient.createUserBookmarksRestaurant(account._id, restaurantId, restaurant.name);
@@ -42,7 +42,7 @@ function Details() {
               <img src={restaurant.image_url} alt={restaurant.name} />
             </div>
             <div className="button-container">
-              {account.role !== Roles.ANONYMOUS && (
+              {account.role !== Roles.GUEST && (
                 <button className="bookmark-button" onClick={accountBookmarksRestaurant}>
                   Bookmark
                 </button>

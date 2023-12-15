@@ -65,14 +65,14 @@ function Login() {
       await fetchAccount();
       navigate("/FoodFinder/home");
     } catch (err) {
-      setError(`Login failed, please register.`);
+      setError("Login failed, please register.");
     }
   };
 
   return (
     <div className="login-container">
       <form className="login-form">
-        <h2>{isRegister ? 'Register' : 'Login'}</h2>
+        <h2>{isRegister ? "Register" : "Login"}</h2>
         {error && <div>{error}</div>}
         {registerSucceed && <div>Account created, please login</div>}
         <div className="input-container2">
@@ -93,11 +93,6 @@ function Login() {
                 <input className="form-check-input" type="radio" name="flexRadioDefault" checked={credentials.role === Roles.ADMIN}
                 onChange={() => setCredentials({...credentials, role: Roles.ADMIN})} id="AdminRole" />
                 <label className="form-check-label" for="AdminRole">Admin</label>
-              </div>
-              <div className="form-check">
-                <input className="form-check-input" type="radio" name="flexRadioDefault" checked={credentials.role === Roles.BUSINESS_OWNER}
-                onChange={() => setCredentials({...credentials, role: Roles.BUSINESS_OWNER})} id="BusinessOwnerRole" />
-                <label className="form-check-label" for="BusinessOwnerRole">Business Owner</label>
               </div>
               <div className="form-check">
                 <input className="form-check-input" type="radio" name="flexRadioDefault" checked={credentials.role === Roles.USER}

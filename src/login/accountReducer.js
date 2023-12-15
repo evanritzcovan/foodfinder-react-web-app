@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as client from "./client";
-import { Roles } from './roles';
+import { Roles } from "./roles";
 
 const fetchAccount = async () => {
   return await client.account();
 };
 
 const initialState = {
-  account: fetchAccount() || { username: "Anonymous", role: Roles.ANONYMOUS },
+  account: fetchAccount() || { username: "Guest", role: Roles.GUEST },
 };
 
 const accountSlice = createSlice({
@@ -18,7 +18,7 @@ const accountSlice = createSlice({
       if (action.payload) {
         state.account = action.payload;
       } else {
-        state.account = { username: "Anonymous", role: Roles.ANONYMOUS };
+        state.account = { username: "Guest", role: Roles.GUEST };
       }
     },
   },

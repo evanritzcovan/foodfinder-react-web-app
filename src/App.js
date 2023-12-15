@@ -1,4 +1,4 @@
-import './App.css';
+import "./App.css";
 import React from "react";
 import Navigation from "./navigation";
 import { Routes, Route, Navigate, HashRouter } from "react-router-dom";
@@ -8,7 +8,7 @@ import Login from "./login";
 import Search from "./search";
 import Profile from "./profile";
 import UserList from "./profile/list";
-import Contact from './contact';
+import Contact from "./contact";
 import Details from "./details";
 import Edit from "./profile/edit";
 

@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from "react-router-dom";
 import "./index.css";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import * as client from "../profile/client";
-import { Roles } from '../login/roles';
-import { setAccount } from '../login/accountReducer';
+import { Roles } from "../login/roles";
+import { setAccount } from "../login/accountReducer";
 
 function Navigation() {
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
@@ -15,7 +15,7 @@ function Navigation() {
 
   const signout = async () => {
     await client.signout();
-    dispatch(setAccount({ username: "Anonymous", role: Roles.ANONYMOUS }));
+    dispatch(setAccount({ username: "Guest", role: Roles.GUEST }));
   };
 
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
@@ -26,7 +26,7 @@ function Navigation() {
       <button className="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded={!isNavCollapsed} aria-label="Toggle navigation" onClick={handleNavCollapse}>
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse justify-content-end`} id="navbarSupportedContent">
+      <div className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse justify-content-end`} id="navbarSupportedContent">
         <ul className="navbar-nav me-auto">
           <li className="nav-item active">
             <Link className="nav-link cr-co" to="/FoodFinder/home">Home</Link>
@@ -63,7 +63,7 @@ function Navigation() {
         </ul>
         {account && (
           <Link className="nav-link user" to={!account._id ? `/FoodFinder/login` : `/FoodFinder/profile/${account._id}`}>
-            Welcome, {!account._id ? 'Anonymous' : account.firstName}
+            Welcome, {!account._id ? "Guest" : account.firstName}
           </Link>
         )}
       </div>

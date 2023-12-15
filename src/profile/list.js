@@ -77,7 +77,6 @@ function UserList() {
               <select placeholder={user.role} onChange={(e) => setCredentials({ ...credentials, role: e.target.value })}>
                 <option value="USER">User</option>
                 <option value="ADMIN">Admin</option>
-                <option value="BUSINESS_OWNER">Business Owner</option>
               </select>
             </td>
             <td className="text-nowrap">
